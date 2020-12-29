@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Event from "../components/Event"
 import reducer from "../reducers";
 
 const App = () => {
@@ -15,10 +16,10 @@ const App = () => {
     dispatch({
       type: "CREATE_EVENT",
       title,
-      body
-    })
-    setTitle("")
-    setBody("")
+      body,
+    });
+    setTitle("");
+    setBody("");
   };
   return (
     <div className="container-fluid">
@@ -34,7 +35,7 @@ const App = () => {
           />
         </div>
 
-        <div className="form-grup">
+        <div className="form-grup mt-3">
           <label htmlFor="formEventBody">ボディー</label>
           <textarea
             className="form-control"
@@ -44,10 +45,12 @@ const App = () => {
           />
         </div>
 
-        <button className="btn btn-primary" onClick={addEvent}>
+        <button className="btn btn-primary my-3" onClick={addEvent}>
           イベントを作成する
         </button>
-        <button className="btn btn-danger">全てのイベントを削除する</button>
+        <button className="btn btn-danger my-3">
+          全てのイベントを削除する
+        </button>
       </form>
 
       <h4>イベント一覧</h4>
@@ -60,6 +63,13 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
+        <tbody>
+          {state.map((event, index) => {
+            return(
+              <Event key={index} event={event} dispatch={dispatch} />
+            )
+          })}
+        </tbody>
       </table>
     </div>
   );
