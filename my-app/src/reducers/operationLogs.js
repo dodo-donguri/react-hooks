@@ -5,7 +5,7 @@ const operationLogs = (state = [], action ) => {
         case ADD_OPERATION_LOG:
              const operationLog = {
                  description: action.description,
-                 operateaAt: action.operateaAt
+                 operatedAt: action.operatedAt
              }
             return [operationLog, ...state]
         case DELETE_ADD_OPERATION_LOGS:
