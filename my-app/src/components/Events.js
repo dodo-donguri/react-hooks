@@ -4,6 +4,7 @@ import AppContext from "../contexts/AppContext"
 
 const Events = () => {
   const { state } = useContext(AppContext)
+  console.log(state.events.length)
   return (
     <>
       <h4>イベント一覧</h4>
@@ -17,7 +18,7 @@ const Events = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((event, index) => {
+          {state.events.map((event, index) => {
             return <Event key={index} event={event} />;
           })}
         </tbody>
